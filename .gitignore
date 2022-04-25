@@ -1,0 +1,67 @@
+# Temporary files and build artifacts
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.so
+*.so.*
+*.dll
+*.dylib
+
+# Build and install directories
+/bin/
+/.bin/
+/build*/
+/.build*/
+/install*/
+/.install*/
+/cmake-build*/
+/.cmake-build*/
+
+
+# CMake (even though out-of-source builds should be already covered)
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeLists.txt.ini
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# VS-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+.vs
+*.pdb
+*.obj
+*.pch
+*.tmp
+*.sdf
+*.cachefile
+
+# Other IDEs
+*.autosave
+*.pro.user
+*.pro.user.*
+compile_commands.json
+*creator.user*
+.idea
+*.sln.iml
+.vscode
+CMakeSettings.json
+
+# Misc
+**/.comments/
+/.storage/
+/data/
+
