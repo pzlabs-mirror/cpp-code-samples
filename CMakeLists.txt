@@ -41,6 +41,8 @@ target_link_libraries(flags INTERFACE
 # Enable include paths relative to the `src` directory
 target_include_directories(flags INTERFACE src)
 
+add_executable(hello_world src/hello_world/hello_world_main.cpp)
+
 add_executable(bitset
 	src/bitset/bitset.hpp
 	src/bitset/bitset.cpp
