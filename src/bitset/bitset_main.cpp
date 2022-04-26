@@ -42,6 +42,7 @@ int main() {
 
 		struct SetRef { const char* name; BitSet& ref; };
 		for (SetRef setRef: {SetRef{"a", a}, SetRef{"b", b}}) {
+			// This typedef is needed to make the following range-based for loop syntactically correct
 			using SizeArr = size_t[];
 			for (size_t num : SizeArr{0, 1, 2, 3, 5, 7, 8, 9, 15, 45, 120}) {
 				std::cout << setRef.name << ".get(" << num << ") -> " << setRef.ref.get(num) << "; ";

@@ -5,12 +5,11 @@
 #include <iomanip>
 
 BitSet::BitSet(const BitSet& other):
-	m_data(nullptr),
 	m_size(other.m_size)
 {
-	if (m_size != 0) {
-		m_data = new uint8_t[m_size];
-		std::memcpy(m_data, other.m_data, m_size); // Note the std:: namespace
+	if (other.m_size != 0) {
+		m_data = new uint8_t[other.m_size];
+		std::memcpy(m_data, other.m_data, other.m_size); // Note the std:: namespace
 	}
 }
 
@@ -34,7 +33,8 @@ void BitSet::set(size_t pos, bool value) {
 		m_size = newSize;
 	}
 
-	// Branchless bit set. Compare with the conditional version: https://godbolt.org/z/3fTfor58b
+	// Branchless bit assignment. Compare with the conditional version:
+	// https://godbolt.org/z/3fTfor58b [extra]
 	const size_t bitIdx = pos % 8;
 	m_data[byteIdx] &= ~(1u << bitIdx); // clear the old bit value
 	m_data[byteIdx] |= value * (1u << bitIdx); // set the new bit value
@@ -53,6 +53,8 @@ BitSet& BitSet::operator=(const BitSet& other) {
 
 	if (m_size != other.m_size) {
 		delete[] m_data;
+		// Reset data members to make sure that BitSet stays in a valid state even if memory
+		// allocation (`new uint8_t[..]`) fails throwing `std::bad_alloc` [extra]
 		m_data = nullptr;
 		m_size = 0;
 
@@ -119,7 +121,7 @@ BitSet operator|(const BitSet& a, const BitSet& b) {
 		for (size_t i = 0; i < commonSize; ++i) {
 			result.m_data[i] = a.m_data[i] | b.m_data[i];
 		}
-		// handle extra
+		// Handle the rest of the bytes
 		std::memcpy(&result.m_data[commonSize], &longerData[commonSize],
 			longerSize - commonSize);
 	}
@@ -166,17 +168,12 @@ BitSet operator^(const BitSet& a, const BitSet& b) {
 		for (size_t i = 0; i < commonSize; ++i) {
 			result.m_data[i] = a.m_data[i] ^ b.m_data[i];
 		}
-		// Handle extra
+		// Handle the rest of the bytes
 		std::memcpy(&result.m_data[commonSize], &longerData[commonSize],
 			longerSize - commonSize);
 	}
 
 	return result;
-}
-
-void swap(BitSet& a, BitSet& b) noexcept {
-	std::swap(a.m_data, b.m_data);
-	std::swap(a.m_size, b.m_size);
 }
 
 std::ostream& operator<<(std::ostream& output, const BitSet& bitset) {

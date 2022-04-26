@@ -87,7 +87,7 @@ public:
 	/// Alternatively, set the value of the bit at the position `pos`
 	void set(size_t pos, bool value = true);
 
-	/// TODO: flip bit
+	/// TODO: Add flip() function
 
 	/// @brief Equivalent to `get(pos)`
 	bool operator[](size_t pos) const {
@@ -95,7 +95,7 @@ public:
 	}
 
 	/// @brief operator[] that also supports bit assignment as in `bitset[pos] = value`
-	/// @note This version is non-const
+	/// @note This version can only be called on non-const objects
 	BitReference operator[](size_t pos) {
 		return {*this, pos};
 	}
@@ -117,8 +117,13 @@ public:
 	/// @brief Construct a symmetric difference of two sets
 	friend BitSet operator^(const BitSet& a, const BitSet& b);
 
-	/// @brief Swap the contents of two sets [extra]
-	friend void swap(BitSet& a, BitSet& b) noexcept;
+	/// @brief Swap the contents of two sets
+	friend void swap(BitSet& a, BitSet& b) noexcept {
+		using std::swap;
+
+		swap(a.m_data, b.m_data);
+		swap(a.m_size, b.m_size);
+	}
 
 	/// @brief Write to the stream `output` in the format of `{value1, value2, ..., valueN}`
 	friend std::ostream& operator<<(std::ostream& output, const BitSet& bitset);
