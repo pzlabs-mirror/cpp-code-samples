@@ -42,6 +42,7 @@ target_link_libraries(flags INTERFACE
 target_include_directories(flags INTERFACE src)
 
 add_executable(hello_world src/hello_world/hello_world_main.cpp)
+target_link_libraries(hello_world PRIVATE flags::flags)
 
 add_executable(bitset
 	src/bitset/bitset.hpp
@@ -49,3 +50,10 @@ add_executable(bitset
 	src/bitset/bitset_main.cpp
 )
 target_link_libraries(bitset PRIVATE flags::flags)
+add_executable(expression_tree
+	src/expression_tree/expression.hpp
+	src/expression_tree/operators.hpp
+	src/expression_tree/functions.hpp
+	src/expression_tree/expression_tree_main.cpp
+)
+target_link_libraries(expression_tree PRIVATE flags::flags stdlib::math)
