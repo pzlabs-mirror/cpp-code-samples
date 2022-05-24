@@ -13,7 +13,7 @@ class Expression {
 public:
 	static constexpr int maxPrecedence = 20;
 
-	///@note A polymorphic class should have a virtual destructor
+	/// @note A polymorphic class should have a virtual destructor
 	virtual ~Expression() = default;
 
 	/// @brief Evaluate the expression and return the numerical result

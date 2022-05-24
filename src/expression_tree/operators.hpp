@@ -69,7 +69,7 @@ public:
 	using BinaryOperator::BinaryOperator;
 
 	double eval() const override {
-		return isComplete() ? m_first->eval() * m_second->eval() : std::nan("*");
+		return m_first->eval() * m_second->eval();
 	}
 
 	int precedence() const override { return 10; }
