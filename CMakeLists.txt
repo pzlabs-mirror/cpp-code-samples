@@ -57,3 +57,10 @@ add_executable(expression_tree
 	src/expression_tree/expression_tree_main.cpp
 )
 target_link_libraries(expression_tree PRIVATE flags::flags stdlib::math)
+
+add_executable(array_view
+	src/array_view/array_view.hpp
+	src/array_view/array_view_main.cpp
+)
+target_link_libraries(array_view PRIVATE flags::flags)
+
