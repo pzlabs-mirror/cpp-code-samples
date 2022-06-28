@@ -70,3 +70,8 @@ add_executable(scoped_ptr
 )
 target_link_libraries(scoped_ptr PRIVATE flags::flags)
 
+add_executable(list
+	src/list/list.hpp
+	src/list/list_main.cpp
+)
+target_link_libraries(list PRIVATE flags::flags)
