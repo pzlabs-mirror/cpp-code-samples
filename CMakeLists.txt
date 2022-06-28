@@ -64,3 +64,9 @@ add_executable(array_view
 )
 target_link_libraries(array_view PRIVATE flags::flags)
 
+add_executable(scoped_ptr
+	src/scoped_ptr/scoped_ptr.hpp
+	src/scoped_ptr/scoped_ptr_main.cpp
+)
+target_link_libraries(scoped_ptr PRIVATE flags::flags)
+
