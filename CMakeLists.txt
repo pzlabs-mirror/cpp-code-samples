@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21) # At least CMake v3.21 is needed because of C17 support
+cmake_minimum_required(VERSION 3.21)
 
 project(cpp_code_samples
 	DESCRIPTION "A collection of code samples and examples for projects in C++"

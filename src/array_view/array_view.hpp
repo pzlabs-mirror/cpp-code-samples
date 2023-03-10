@@ -47,9 +47,8 @@ public:
 	{ }
 
 	//// Conversion from ArrayView of non-const elements to ArrayView of const elements
-	ArrayView(ArrayView<value_type> other) noexcept
-			requires (std::is_const_v<T>)
-		: // See C++ 20 Concepts
+	ArrayView(const ArrayView<value_type>& other) noexcept
+			requires (std::is_const_v<T>): // See C++ 20 Concepts
 		m_data(other.data()),
 		m_size(other.size())
 	{ }

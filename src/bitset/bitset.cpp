@@ -36,8 +36,8 @@ void BitSet::set(size_t pos, bool value) {
 	// Branchless bit assignment. Compare with the conditional version:
 	// https://godbolt.org/z/3fTfor58b [extra]
 	const size_t bitIdx = pos % 8;
-	m_data[byteIdx] &= ~(1u << bitIdx); // clear the old bit value
-	m_data[byteIdx] |= value * (1u << bitIdx); // set the new bit value
+	m_data[byteIdx] &= static_cast<uint8_t>(~(1 << bitIdx)); // clear the old bit value
+	m_data[byteIdx] |= static_cast<uint8_t>(value * (1 << bitIdx)); // set the new bit value
 }
 
 void BitSet::clear() {

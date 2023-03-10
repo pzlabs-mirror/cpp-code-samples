@@ -9,6 +9,7 @@
 
 /// Ensure that we don't have to type std:: every time we use size_t
 using std::size_t;
+using std::uint8_t;
 
 /// @brief A set of unique nsigned numbers that uses a dynamically sized sequence of bits
 /// to represent the elements of the set

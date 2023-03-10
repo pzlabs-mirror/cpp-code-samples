@@ -160,7 +160,7 @@ set(clang_gcc_errors
 	# Error when a switch case falls through. Use [[fallthrough]] to fix
 #	-Werror=implicit-fallthrough
 	# Error on implicit function declaration
-	-Werror=implicit-function-declaration
+	$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,C>:-Werror=implicit-function-declaration>
 )
 
 set(clang_errors ${clang_gcc_errors})

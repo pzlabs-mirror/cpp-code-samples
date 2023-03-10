@@ -19,7 +19,6 @@
 /cmake-build*/
 /.cmake-build*/
 
-
 # CMake (even though out-of-source builds should be already covered)
 CMakeLists.txt.user
 CMakeCache.txt
@@ -54,14 +53,15 @@ _deps
 *.pro.user
 *.pro.user.*
 compile_commands.json
+/data/
 *creator.user*
 .idea
 *.sln.iml
 .vscode
 CMakeSettings.json
+*.kdev4
 
 # Misc
 **/.comments/
 /.storage/
-/data/
 
