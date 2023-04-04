@@ -1,7 +1,7 @@
-#include "scoped_ptr/scoped_ptr.hpp"
-
 #include <string>
 #include <iostream>
+
+#include "scoped_ptr/scoped_ptr.hpp"
 
 /// Use case 1.
 /// A polymorphic object which is managed through a pointer to the the base class, and therefore
@@ -14,7 +14,7 @@ public:
 
 class ConsoleLogger: public ILogger {
 public:
-	virtual void write(const std::string& message) {
+	void write(const std::string& message) override {
 		std::cout << message << '\n';
 	}
 };

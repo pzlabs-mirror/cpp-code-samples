@@ -35,11 +35,13 @@ public:
 	/// be deleted
 	ScopedPtr& operator=(ScopedPtr&& other) noexcept {
 		reset(other.release());
+		return *this;
 	}
 
 	/// @brief Construct a `ScopedPtr` by transfering ownership from another `ScopedPtr` of
 	/// a different type
-	/// @note This constructor is only available if `U*` is convertible to `T*`
+	/// @note This constructor is only available if `U*` is convertible to `T*`. To constrain the
+	/// overload set, we use C++20 concepts (https://en.cppreference.com/w/cpp/language/constraints)
 	template<typename U>
 		requires std::convertible_to<U*, T*>
 	ScopedPtr(ScopedPtr<U>&& other) noexcept:
