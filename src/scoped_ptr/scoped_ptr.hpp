@@ -1,5 +1,5 @@
-#ifndef SCOCPED_PTR_HPP_INCLUDED
-#define SCOCPED_PTR_HPP_INCLUDED
+#ifndef SCOPED_PTR_HPP_INCLUDED
+#define SCOPED_PTR_HPP_INCLUDED
 
 #include <utility>
 #include <concepts>
